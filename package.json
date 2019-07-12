@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "kutty link",
   "main": "index.js",
+  "builds": [{ "src": "**/*.js", "use": "@now/node" }],
+  "env": {
+    "MONGODB_URI": "@kuttydb"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
