@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>kutty.sl</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/cyborg/bulmaswatch.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+
+<body>
+    <section class="hero is-white">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item">
+                            <h1 class="title">
+                                kutty.sl
+                            </h1>
+                        </a>
+                        <span class="navbar-burger burger" id="nav-toggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div id="nav-menu" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item is-active" href="https://github.com/kuttyselva">
+                                🐱‍💻github
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+                    kutty.sh ✌😎
+                </h1>
+                <h2 class="subtitle">
+                    🐱‍💻 Get your kutty short link now 🐱‍💻
+                </h2>
+            </div>
+        </div>
+    </section>
+    <main id="app">
+        <form v-if="!success" @submit.prevent="createKutty()">
+            <div v-if="error" class="notification is-danger">
+                {{error}}
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">URL</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control">
+                            <input v-model="url" required class="input is-rounded" type="name"
+                                placeholder="http://example.com">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">kutty.sl/</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control">
+                            <input v-model="name" class="input is-rounded" type="text" placeholder="Enter short value">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="srnk">
+                <button type="submit" class="button is-info is-rounded">Kuttify</button>
+            </div>
+        </form>
+        <h1 v-if="success" class="title is-1" target="_blank" style="text-align:center"><a
+                :href="'/' +name">kutty.sl/{{name}}</a></h1>
+    </main>
+
+</body>
+<script src="./main.js"></script>
+<script type="text/javascript">
+    document.getElementById("nav-toggle").addEventListener("click", toggleNav);
+    function toggleNav() {
+        var nav = document.getElementById("nav-menu");
+        var className = nav.getAttribute("class");
+        if (className == "navbar-menu") {
+            nav.className = "navbar-menu is-active";
+        } else {
+            nav.className = "navbar-menu";
+        }
+    }
+</script>
+
+</html>
